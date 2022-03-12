@@ -20,7 +20,7 @@ it("renders", () => {
   expect(getByTestId("h1tag")).toHaveTextContent("Contact Me");
 });
 
-it("renders", () => {
+it("renders button that says", () => {
   const { getByTestId } = render(<Contact />);
   expect(getByTestId("button")).toHaveTextContent("Submit");
 });
