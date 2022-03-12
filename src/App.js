@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Nav from "./components/Nav";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
+import ContactForm from "./components/Contact";
 
 function App() {
   const [categories] = useState([
@@ -17,6 +18,7 @@ function App() {
       description: "Fields, farmhouses, waterfalls, and the beauty of nature",
     },
   ]);
+  const [contactSelected, setContactSelected] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
   return (
@@ -25,10 +27,18 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
       ></Nav>
       <main>
-        <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
+        {!contactSelected ? (
+          <>
+            <Gallery currentCategory={currentCategory}></Gallery>
+            <About></About>
+          </>
+        ) : (
+          <ContactForm></ContactForm>
+        )}
       </main>
     </div>
   );
